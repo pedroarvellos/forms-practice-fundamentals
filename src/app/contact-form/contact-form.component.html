@@ -78,6 +78,7 @@
         </div>
         <div class="form-group">
             <label for="contactMethod"></label>
+            <!-- multiple is an option of html5: https://www.w3schools.com/tags/att_select_multiple.asp -->
             <select ngModel multiple name="contactMethod" id="contactMethod" class="form-control">
                 <!-- with ngValue can bind the value of the option as the role object  -->
                 <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
