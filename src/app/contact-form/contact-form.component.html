@@ -13,32 +13,40 @@
         the key work ngModel. With this I can have the control of all values
         of the fields, validate then and also submit. -->
     <form ngForm #form="ngForm" (ngSubmit)="submit(form.value)">
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input 
-                required
-                minlength="3"
-                maxlength="10"
-                pattern="apple pie"
-                ngModel
-                name="firstName"
-                #firstName="ngModel"
-                id="firstName"
-                type="text"
-                class="form-control">
-            <div
-                class="alert alert-danger"
-                *ngIf="!firstName.valid && !firstName.pristine">
-                <div *ngIf="firstName.errors.required">
-                    First name is required.
-                </div>
-                <div *ngIf="firstName.errors.minlength">
-                    First name should be minimum
-                    {{firstName.errors.minlength.requiredLength}}
-                    characters.
-                </div>
-                <div *ngIf="firstName.errors.pattern">
-                    First name should be apple pie 🍎🥧.
+        <!-- with this ngModelGroup directive, I can have access to the whole
+            group, so if I need to have access of the group state, I can access its
+            object by the ngModelGroup. The difference between ngForm and ngModelGroup is
+            that the ngForm exposes the ngSubmit directive, ngModelGroup doesn't have this output
+            property. -->
+        <div ngModelGroup="contact" #contact="ngModelGroup">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input 
+                    required
+                    minlength="3"
+                    maxlength="10"
+                    pattern="apple pie"
+                    ngModel
+                    name="firstName"
+                    #firstName="ngModel"
+                    id="firstName"
+                    type="text"
+                    class="form-control">
+                <br>
+                <div
+                    class="alert alert-danger"
+                    *ngIf="!firstName.valid && !firstName.pristine">
+                    <div *ngIf="firstName.errors.required">
+                        First name is required.
+                    </div>
+                    <div *ngIf="firstName.errors.minlength">
+                        First name should be minimum
+                        {{firstName.errors.minlength.requiredLength}}
+                        characters.
+                    </div>
+                    <div *ngIf="firstName.errors.pattern">
+                        First name should be apple pie 🍎🥧.
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,6 +71,25 @@
                 class="form-control">
             </textarea>
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ngModel name="isSubscribed"> Subscribe to mailing list
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="contactMethod"></label>
+            <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+                <option value=""></option>
+                <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
+            </select>
+        </div>
+        <button [disabled]="!form.valid" class="btn btn-primary">Submit</button>
     </form>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Form Object</h5>
+            <p class="card-text">{{ form.value | json }}</p>
+        </div>
+    </div>
 </div>

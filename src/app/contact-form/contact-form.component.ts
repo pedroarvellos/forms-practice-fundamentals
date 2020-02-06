@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-form.component.scss']
 })
 export class ContactFormComponent {
+  contactMethods: Array<{id: number, name: string }> = [
+    {id: 1, name: 'Email'},
+    {id: 2, name: 'Name'}
+  ]
+
   submit(form) {
     console.log(form)
   }
