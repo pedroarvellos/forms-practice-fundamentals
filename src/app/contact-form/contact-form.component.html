@@ -40,8 +40,16 @@
                 
                 In short, When I apply the 'ngModel' key word and the 'name' attribute on an input field, Angular automatically creates
                 an instance of the form control class and associates it with the input field  -->
-            <textarea ngModel name="comment" #comment="ngModel" id="comment" cols="40" rows="10"
-                type="text" class="form-control"></textarea>
+            <textarea
+                ngModel
+                name="comment"
+                #comment="ngModel"
+                id="comment"
+                cols="40"
+                rows="10"
+                type="text"
+                class="form-control">
+            </textarea>
         </div>
         <button class="btn btn-primary">Submit</button>
     </form>
