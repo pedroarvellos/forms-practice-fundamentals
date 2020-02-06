@@ -13,6 +13,15 @@ export class SignupValidators {
         return null;
     }
 
+    static usernameShouldBeUnique(control: AbstractControl) : Promise<ValidationErrors> | null {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if(control.value === 'john') resolve({ usernameShouldBeUnique: true })
+                else resolve(null)
+            }, 1000)
+        })
+    }
+
     static passwordCannotBeSimple(control: AbstractControl) : ValidationErrors | null {
         const hasCapitalLetter = (/[A-Z]/.test(control.value as string));
         const hasNumber = (/[0-9]/.test(control.value as string));

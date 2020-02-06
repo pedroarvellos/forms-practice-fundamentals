@@ -13,8 +13,8 @@ export class SignupFormComponent {
       Validators.required,
       Validators.minLength(3),
       SignupValidators.usernameCannotContainSpace,
-      SignupValidators.usernameCannotContainCapitals
-    ]),
+      SignupValidators.usernameCannotContainCapitals,
+    ], SignupValidators.usernameShouldBeUnique),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(3),

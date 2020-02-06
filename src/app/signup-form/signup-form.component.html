@@ -10,11 +10,12 @@
                 type="text" 
                 class="form-control">
             <br>
-            <div *ngIf="!username.valid && !username.pristine" class="alert alert-danger">
-                <div *ngIf="username.errors.required">Username is required.</div>
-                <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters.</div>
-                <div *ngIf="username.errors.usernameCannotContainSpace">Username cannot contain space.</div>
-                <div *ngIf="username.errors.usernameCannotContainCapitals">Username cannot contain capital letters.</div>
+            <div *ngIf="username.invalid && !username.pristine" class="alert alert-danger">
+                <div *ngIf="username.errors?.required">Username is required.</div>
+                <div *ngIf="username.errors?.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters.</div>
+                <div *ngIf="username.errors?.usernameCannotContainSpace">Username cannot contain space.</div>
+                <div *ngIf="username.errors?.usernameCannotContainCapitals">Username cannot contain capital letters.</div>
+                <div *ngIf="username.errors?.usernameShouldBeUnique">Username should be unique.</div>
             </div>
         </div>
         <div class="form-group">
