@@ -5,7 +5,13 @@
         set it automatically. Because in my input fields I use the ngModel,
         Angular creates a form control object under the hood and associates that
         with the fields, that's why when I submit I can pass an object with all
-        the values fields. -->
+        the values fields.
+        In short, in Angular when it comes to template-driven forms,
+        I have a FormGroup and FormControl fields inside this FormGroup,
+        the FormGroup is defined by the key word ngForm (which is added
+        automatically if I don't add), and the formControls are defined by
+        the key work ngModel. With this I can have the control of all values
+        of the fields, validate then and also submit. -->
     <form ngForm #form="ngForm" (ngSubmit)="submit(form.value)">
         <div class="form-group">
             <label for="firstName">First Name</label>
