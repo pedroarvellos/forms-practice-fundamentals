@@ -84,6 +84,12 @@
                 <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
             </select>
         </div>
+        <div *ngFor="let type of contactType" class="radio">
+            <label>
+                <input ngModel type="radio" name="contactType" [value]="type.id">
+                {{ type.name }}
+            </label>
+        </div>
         <button [disabled]="!form.valid" class="btn btn-primary">Submit</button>
     </form>
     <br>

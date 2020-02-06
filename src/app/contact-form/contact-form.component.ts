@@ -10,6 +10,10 @@ export class ContactFormComponent {
     {id: 1, name: 'Email'},
     {id: 2, name: 'Name'}
   ]
+  contactType: Array<{id: number, name: string }> = [
+    {id: 1, name: 'User'},
+    {id: 2, name: 'Developer'}
+  ]
 
   submit(form) {
     console.log(form)
