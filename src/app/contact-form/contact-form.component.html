@@ -78,8 +78,8 @@
         </div>
         <div class="form-group">
             <label for="contactMethod"></label>
-            <select ngModel name="contactMethod" id="contactMethod" class="form-control">
-                <option value=""></option>
+            <select ngModel multiple name="contactMethod" id="contactMethod" class="form-control">
+                <!-- with ngValue can bind the value of the option as the role object  -->
                 <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
             </select>
         </div>
