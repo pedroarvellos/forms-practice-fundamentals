@@ -9,6 +9,7 @@
                 id="username" 
                 type="text" 
                 class="form-control">
+            <div *ngIf="username.pending">Checking username...</div>
             <br>
             <div *ngIf="username.invalid && !username.pristine" class="alert alert-danger">
                 <div *ngIf="username.errors?.required">Username is required.</div>
