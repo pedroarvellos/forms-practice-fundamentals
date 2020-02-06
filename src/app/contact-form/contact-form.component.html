@@ -3,11 +3,14 @@
     <form>
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input required ngModel minlength="3" maxlength="10" pattern="apple pie" name="firstName" #firstName="ngModel" id="firstName" type="text" class="form-control">
+            <input required ngModel minlength="3" maxlength="10" pattern="apple pie" name="firstName"
+                #firstName="ngModel" id="firstName" type="text" class="form-control">
             <br>
             <div class="alert alert-danger" *ngIf="!firstName.valid && !firstName.pristine">
                 <div *ngIf="firstName.errors.required">First name is required.</div>
-                <div *ngIf="firstName.errors.minlength">First name should be minimum 3 characters.</div>
+                <div *ngIf="firstName.errors.minlength">First name should be minimum
+                    {{firstName.errors.minlength.requiredLength}}
+                    characters.</div>
                 <div *ngIf="firstName.errors.pattern">First name should be apple pie 🍎🥧.</div>
             </div>
         </div>
@@ -21,7 +24,8 @@
                 
                 In short, When I apply the 'ngModel' key word and the 'name' attribute on an input field, Angular automatically creates
                 an instance of the form control class and associates it with the input field  -->
-            <textarea ngModel name="comment" #comment="ngModel" (change)="log(comment)" id="comment" cols="40" rows="10" type="text" class="form-control"></textarea>
+            <textarea ngModel name="comment" #comment="ngModel" (change)="log(comment)" id="comment" cols="40" rows="10"
+                type="text" class="form-control"></textarea>
         </div>
         <button class="btn btn-primary">Submit</button>
     </form>
