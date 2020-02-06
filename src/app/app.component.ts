@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'forms';
-  formType = 0;
+  formType = 1;
 }

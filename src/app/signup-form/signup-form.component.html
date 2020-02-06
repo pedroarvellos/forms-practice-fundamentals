@@ -13,6 +13,8 @@
             <div *ngIf="!username.valid && !username.pristine" class="alert alert-danger">
                 <div *ngIf="username.errors.required">Username is required.</div>
                 <div *ngIf="username.errors.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters.</div>
+                <div *ngIf="username.errors.usernameCannotContainSpace">Username cannot contain space.</div>
+                <div *ngIf="username.errors.usernameCannotContainCapitals">Username cannot contain capital letters.</div>
             </div>
         </div>
         <div class="form-group">
@@ -22,6 +24,12 @@
                 id="password" 
                 type="text" 
                 class="form-control">
+            <br>
+            <div *ngIf="!password.valid && !password.pristine" class="alert alert-danger">
+                <div *ngIf="password.errors.required">Password is required.</div>
+                <div *ngIf="password.errors.minlength">Password should be minimum {{ password.errors.minlength.requiredLength }} characters.</div>
+                <div *ngIf="password.errors.passwordCannotBeSimple">Password should have at least one digit, one uppercase and one lowercase.</div>
+            </div>
         </div>
         <button class="btn btn-primary" type="submit">Sign Up</button>
     </form>
