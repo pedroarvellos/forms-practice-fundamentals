@@ -1,6 +1,9 @@
 <div class="container">
     <h4>Template-driven Forms</h4>
-    <form>
+    <!-- like the ngModel, I'm creating a variable to access
+        the ngForm. If I do not set the directive ngForm to this form, it will
+        set it automatically.  -->
+    <form ngForm #form="ngForm" (ngSubmit)="submit(form.value)">
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input 
