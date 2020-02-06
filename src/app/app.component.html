@@ -4,5 +4,5 @@
         <button type="button" class="btn btn-outline-info btn-lg" (click)="formType = 1">Reactive Forms</button>
     </div>
     <contact-form [hidden]="formType > 0"></contact-form>
-    <h4 class="d-flex justify-content-center" [hidden]="formType === 0">Reactive Forms</h4>
+    <signup-form [hidden]="formType === 0"></signup-form>
 </div>
