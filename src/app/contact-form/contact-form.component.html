@@ -3,8 +3,13 @@
     <form>
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input required ngModel name="firstName" #firstName="ngModel" id="firstName" type="text" class="form-control">
-            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name is required.</div>
+            <input required ngModel minlength="3" maxlength="10" pattern="apple pie" name="firstName" #firstName="ngModel" id="firstName" type="text" class="form-control">
+            <br>
+            <div class="alert alert-danger" *ngIf="!firstName.valid && !firstName.pristine">
+                <div *ngIf="firstName.errors.required">First name is required.</div>
+                <div *ngIf="firstName.errors.minlength">First name should be minimum 3 characters.</div>
+                <div *ngIf="firstName.errors.pattern">First name should be apple pie 🍎🥧.</div>
+            </div>
         </div>
         <!-- div.form-group>label[for="comment"]+textarea[id="comment"][type="text"].form-control -->
         <div class="form-group">
