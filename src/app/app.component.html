@@ -1,1 +1,8 @@
-<contact-form></contact-form>
+<div class="container">
+    <div class="d-flex justify-content-around">
+        <button type="button" class="btn btn-outline-primary btn-lg" (click)="formType = 0">Template-driven Forms</button>
+        <button type="button" class="btn btn-outline-info btn-lg" (click)="formType = 1">Reactive Forms</button>
+    </div>
+    <contact-form [hidden]="formType > 0"></contact-form>
+    <h4 class="d-flex justify-content-center" [hidden]="formType === 0">Reactive Forms</h4>
+</div>
