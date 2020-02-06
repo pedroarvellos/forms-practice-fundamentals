@@ -1,13 +1,21 @@
 <div class="container">
+    <h4>Template-driven Forms</h4>
     <form>
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input id="firstName" type="text" class="form-control">
+            <input [(ngModel)]="firstName" name="firstName" id="firstName" type="text" class="form-control">
         </div>
         <!-- div.form-group>label[for="comment"]+textarea[id="comment"][type="text"].form-control -->
         <div class="form-group">
             <label for="comment">Comment</label>
-            <textarea name="" id="comment" cols="30" rows="10" type="text" class="form-control"></textarea>
+            <!-- Doing two-way data binding under the hood -->
+            <!-- if I just write ngModel, I get a reference of this form, and so automatically the two-way data binding.
+                Just to test, I'm creating a variable (#comment), putting the value of ngModule and passing as parameter to the log method,
+                so I can make sure I'm getting the right reference.
+                
+                In short, When I apply the 'ngModel' key word and the 'name' attribute on an input field, Angular automatically creates
+                an instance of the form control class and associates it with the input field  -->
+            <textarea ngModel name="comment" #comment="ngModel" (change)="log(comment)" id="comment" cols="40" rows="10" type="text" class="form-control"></textarea>
         </div>
         <button class="btn btn-primary">Submit</button>
     </form>
