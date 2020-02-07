@@ -22,6 +22,18 @@ export class SignupFormComponent {
     ])
   });
 
+  login() {
+    if(Math.floor(Math.random() * 10) > 5) {
+      this.form.setErrors({
+        errorOne: true
+      });
+    } else {
+      this.form.setErrors({
+        errorTwo: true
+      });
+    }
+  }
+
   get username() {
     return this.form.get('username');
   }

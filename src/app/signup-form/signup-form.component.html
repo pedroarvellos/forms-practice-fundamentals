@@ -1,7 +1,12 @@
 <div>
     <br>
     <h4 class="d-flex justify-content-center">Reactive Forms</h4>
-    <form [formGroup]="form">
+    <div *ngIf="form.errors" class="alert alert-danger">
+        It was not possible to log in.
+        <div *ngIf="form.errors.errorOne">Error 1. 😢</div>
+        <div *ngIf="form.errors.errorTwo">Error 2. 😢</div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="login()">
         <div class="form-group">
             <label for="username">Username</label>
             <input 
