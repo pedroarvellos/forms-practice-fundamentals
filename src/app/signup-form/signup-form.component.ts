@@ -24,17 +24,34 @@ export class SignupFormComponent {
       ])
     }),
     topics: new FormGroup({
-      languages: new FormArray([
-
-      ])
+      languages: new FormArray([])
     })
   });
-  constructor(gb: FormBuilder) {
 
-  }
+  // Another aproach to do the same thing
+  // form;
+  // constructor(b: FormBuilder) {
+  //   this.form = b.group({
+  //     account: b.group({
+  //       username: ['', [
+  //         Validators.required,
+  //         Validators.minLength(3),
+  //         SignupValidators.usernameCannotContainSpace,
+  //         SignupValidators.usernameCannotContainCapitals],
+  //         SignupValidators.usernameShouldBeUnique],
+  //       password: ['', [
+  //         Validators.required,
+  //         Validators.minLength(3),
+  //         SignupValidators.passwordCannotBeSimple]]
+  //     }),
+  //     topics: b.group({
+  //       languages: b.array([])
+  //     })
+  //   })
+  // }
 
   login() {
-    if(Math.floor(Math.random() * 10) > 5) {
+    if (Math.floor(Math.random() * 10) > 5) {
       this.form.setErrors({
         errorOne: true
       });
@@ -61,7 +78,7 @@ export class SignupFormComponent {
   get username() {
     return this.form.get('account.username');
   }
-  
+
   get password() {
     return this.form.get('account.password');
   }
