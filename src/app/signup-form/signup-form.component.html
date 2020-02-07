@@ -1,36 +1,43 @@
 <div>
     <br>
     <h4 class="d-flex justify-content-center">Reactive Forms</h4>
-    <form [formGroup]="form">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input 
-                formControlName="username"
-                id="username" 
-                type="text" 
-                class="form-control">
-            <div *ngIf="username.pending">Checking username...</div>
-            <br>
-            <div *ngIf="username.invalid && !username.pristine" class="alert alert-danger">
-                <div *ngIf="username.errors?.required">Username is required.</div>
-                <div *ngIf="username.errors?.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters.</div>
-                <div *ngIf="username.errors?.usernameCannotContainSpace">Username cannot contain space.</div>
-                <div *ngIf="username.errors?.usernameCannotContainCapitals">Username cannot contain capital letters.</div>
-                <div *ngIf="username.errors?.usernameShouldBeUnique">Username should be unique.</div>
+    <div *ngIf="form.errors" class="alert alert-danger">
+        It was not possible to log in.
+        <div *ngIf="form.errors.errorOne">Error 1. 😢</div>
+        <div *ngIf="form.errors.errorTwo">Error 2. 😢</div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="login()">
+        <div formGroupName="account">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input 
+                    formControlName="username"
+                    id="username" 
+                    type="text" 
+                    class="form-control">
+                <div *ngIf="username.pending">Checking username...</div>
+                <br>
+                <div *ngIf="username.invalid && !username.pristine" class="alert alert-danger">
+                    <div *ngIf="username.errors?.required">Username is required.</div>
+                    <div *ngIf="username.errors?.minlength">Username should be minimum {{ username.errors.minlength.requiredLength }} characters.</div>
+                    <div *ngIf="username.errors?.usernameCannotContainSpace">Username cannot contain space.</div>
+                    <div *ngIf="username.errors?.usernameCannotContainCapitals">Username cannot contain capital letters.</div>
+                    <div *ngIf="username.errors?.usernameShouldBeUnique">Username should be unique.</div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input 
-                formControlName="password"
-                id="password" 
-                type="text" 
-                class="form-control">
-            <br>
-            <div *ngIf="!password.valid && !password.pristine" class="alert alert-danger">
-                <div *ngIf="password.errors.required">Password is required.</div>
-                <div *ngIf="password.errors.minlength">Password should be minimum {{ password.errors.minlength.requiredLength }} characters.</div>
-                <div *ngIf="password.errors.passwordCannotBeSimple">Password should have at least one digit, one uppercase and one lowercase.</div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                    formControlName="password"
+                    id="password" 
+                    type="text" 
+                    class="form-control">
+                <br>
+                <div *ngIf="!password.valid && !password.pristine" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">Password is required.</div>
+                    <div *ngIf="password.errors.minlength">Password should be minimum {{ password.errors.minlength.requiredLength }} characters.</div>
+                    <div *ngIf="password.errors.passwordCannotBeSimple">Password should have at least one digit, one uppercase and one lowercase.</div>
+                </div>
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Sign Up</button>
