@@ -6,7 +6,7 @@
         <div *ngIf="form.errors.errorOne">Error 1. 😢</div>
         <div *ngIf="form.errors.errorTwo">Error 2. 😢</div>
     </div>
-    <form [formGroup]="form" (ngSubmit)="login()">
+    <form [formGroup]="form">
         <div formGroupName="account">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -40,6 +40,25 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">Sign Up</button>
+        <div formGroupName="topics">
+            <label for="username">Favorite Programming Languages</label>
+            <input
+                type="text"
+                class="form-control"
+                (keyup.enter)="addLanguage(language)"
+                #language>
+            <ul class="list-group">
+                <li 
+                    *ngFor="let language of languages.controls"
+                    (click)="removeLanguage(language)"
+                    class="list-group-item">
+                    {{ language.value }}
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-lg btn-primary" type="button" (click)="login()" style="width: 150px;">Sign Up</button>
+        </div>
     </form>
 </div>
