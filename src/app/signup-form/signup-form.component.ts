@@ -9,6 +9,7 @@ import { SignupValidators } from './signup.validators';
 })
 export class SignupFormComponent {
   form = new FormGroup({
+    // nested groups
     account: new FormGroup({
       username: new FormControl('', [
         Validators.required,
